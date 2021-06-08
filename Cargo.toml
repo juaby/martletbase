@@ -1,0 +1,13 @@
+[workspace]
+
+members = [
+    "martlet-node",
+    "martlet-common",
+    "martlet-housekeeper",
+    "martlet-proxy",
+    "martlet-segment",
+    "martlet-index",
+    "martlet-elastic",
+    "martlet-conductor",
+    "martlet-console",
+]

@@ -1,2 +1,2 @@
-# martletbase
-Distributed Database based on MySQL
+# MartletBase
+A Distributed Database based on MySQL

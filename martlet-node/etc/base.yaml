@@ -1,0 +1,82 @@
+name: martlet
+segments:
+  meta_segment:
+    primary:
+      id: 0
+      url: "jdbc:mysql://localhost:3306/martlet"
+      username: root
+      password: root
+    mirrors:
+      - id: 0
+        url: "jdbc:mysql://localhost:3306/martlet"
+        username: root
+        password: root
+      - id: 1
+        url: "jdbc:mysql://localhost:3306/martlet"
+        username: root
+        password: root
+  data_segments:
+    200:
+      primary:
+        id: 0
+        url: "jdbc:mysql://localhost:3306/martlet"
+        username: root
+        password: root
+      mirrors:
+        - id: 1
+          url: "jdbc:mysql://localhost:3306/martlet"
+          username: root
+          password: root
+        - id: 2
+          url: "jdbc:mysql://localhost:3306/martlet"
+          username: root
+          password: root
+    300:
+      primary:
+        id: 0
+        url: "jdbc:mysql://localhost:3306/martlet"
+        username: root
+        password: root
+      mirrors:
+        - id: 0
+          url: "jdbc:mysql://localhost:3306/martlet"
+          username: root
+          password: root
+        - id: 1
+          url: "jdbc:mysql://localhost:3306/martlet"
+          username: root
+          password: root
+    100:
+      primary:
+        id: 0
+        url: "jdbc:mysql://localhost:3306/martlet"
+        username: root
+        password: root
+      mirrors:
+        - id: 0
+          url: "jdbc:mysql://localhost:3306/martlet"
+          username: root
+          password: root
+        - id: 1
+          url: "jdbc:mysql://localhost:3306/martlet"
+          username: root
+          password: root
+dis_rules:
+  distributed_tables:
+    t_order_item:
+      dis_keys: [ ]
+      dis_algorithm:
+        dis_type: HASH
+        dis_expression: x + y / 3
+      dis_relatives: [ ]
+    t_order:
+      dis_keys:
+        - user_id
+      dis_algorithm:
+        dis_type: HASH
+        dis_expression: x + y / 3
+      dis_relatives:
+        - t_order_item
+  replicated_tables:
+    - t_dept
+    - t_root
